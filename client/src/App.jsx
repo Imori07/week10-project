@@ -1,19 +1,25 @@
-import { useEffect, useState } from 'react';
-import './App.css';
 import { fetchReviews } from './utils/api';
+import { useQuery } from '@tanstack/react-query';
+import './App.css';
 
 function App() {
-  const [data, setData] = useState([]);
+  const { data: reviews, isPending } = useQuery({
+    queryKey: ['reviews'],
+    queryFn: fetchReviews,
+  });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const reviews = await fetchReviews();
-      console.log(reviews);
-    };
-    fetchData();
-  }, []);
-
-  return <></>;
+  return (
+    <div>
+      {isPending && <p>Loading...</p>}
+      <ul>
+        {reviews?.map((review) => (
+          <li key={review.id}>
+            <p>{review.username}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export default App;
