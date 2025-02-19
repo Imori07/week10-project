@@ -10,5 +10,15 @@ export const fetchReviews = async () => {
   if (!response.ok) {
     throw new Error('failed to fetch reviews');
   }
-  return await response.json();
+  const data = await response.json();
+  return data;
+};
+
+export const fetchCryptos = async () => {
+  await delay(2000);
+
+  const res = await fetch(
+    'https://api.coingecko.com/api/v3/search/trending?key=CG-cZ3STLhRzpH8KiixUVPUausw'
+  );
+  return await res.json();
 };
