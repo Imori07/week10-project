@@ -18,7 +18,7 @@ function App() {
   return (
     <div>
       {isPending && <p>Loading cryptos...</p>}
-      {isFetching && <p>Fetching cryptos...</p>}
+      {isFetching && <p>Fetching crypto data...</p>}
       <div>
         {coins?.map((coin) => (
           <div
