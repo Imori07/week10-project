@@ -14,6 +14,7 @@ function App() {
   });
 
   const coins = cryptos?.coins;
+  console.log('refecthing', isFetching);
 
   return (
     <div>
