@@ -10,7 +10,7 @@ function CoinsWithTanstack() {
   } = useQuery({
     queryKey: ['cryptos'],
     queryFn: fetchCryptos,
-    refetchInterval: 7000,
+    refetchInterval: 5000,
   });
 
   const coins = cryptos?.coins;
