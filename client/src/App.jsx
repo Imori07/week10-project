@@ -1,4 +1,4 @@
-import { fetchCryptos, fetchReviews } from './utils/api';
+import { fetchCryptos } from './utils/api';
 import { useQuery } from '@tanstack/react-query';
 import './App.css';
 
@@ -7,6 +7,7 @@ function App() {
     data: cryptos,
     isPending,
     isFetching,
+    isError,
   } = useQuery({
     queryKey: ['cryptos'],
     queryFn: fetchCryptos,
@@ -18,17 +19,20 @@ function App() {
 
   return (
     <div>
-      {isPending && <p>Loading cryptos...</p>}
-      {isFetching && <p>Fetching crypto data...</p>}
+      {isPending ? (
+        <p>Loading cryptos...</p>
+      ) : isFetching ? (
+        <p>re-fetching crypto data...</p>
+      ) : (
+        ''
+      )}
+      {isError && <p>Error Fetching crypto data</p>}
       <div>
         {coins?.map((coin) => (
-          <div
-            key={coin.item.id}
-            style={{ margin: '20px', border: '1px solid red' }}
-          >
+          <div className='coin' key={coin.item.id}>
             <p>{coin.item.name}</p>
             <img src={coin.item.thumb} alt={coin.item.name} />
-            <p>
+            <p style={{ color: isFetching ? 'red' : '#ffffff' }}>
               {coin.item.data.price} <span>{coin.item.symbol}</span>
             </p>
             <p>{coin.item.data.price_btc} BTC</p>
