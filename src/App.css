@@ -1,0 +1,13 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.coin {
+  padding: 15px;
+  margin: 20px;
+  border: 2px solid red;
+  border-radius: 15px;
+}
