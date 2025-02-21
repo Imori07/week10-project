@@ -25,7 +25,7 @@ function App() {
 
     const interval = setInterval(() => {
       fetchData();
-    }, 4000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
@@ -40,7 +40,7 @@ function App() {
           <div className='coin' key={coin.item.id}>
             <p>{coin.item.name}</p>
             <img src={coin.item.thumb} alt={coin.item.name} />
-            <p>
+            <p style={{ color: loading ? 'red' : '#ffffff' }}>
               {coin.item.data.price} <span>{coin.item.symbol}</span>
             </p>
             <p>{coin.item.data.price_btc} BTC</p>
