@@ -25,7 +25,7 @@ function App() {
 
     const interval = setInterval(() => {
       fetchData();
-    }, 7000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, []);
